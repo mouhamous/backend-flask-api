@@ -4,9 +4,11 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from flask_migrate import Migrate
 from .models import db, User
 from flask import json, request
+from flask_cors import CORS
 
 app = Flask(__name__)
 app.config.from_object('settings.Config')
+CORS(app)
 
 db.init_app(app)
 migrate = Migrate(app,db)
